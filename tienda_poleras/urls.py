@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    # path('logout/', auth_views.LogoutView.as_view(next_page='registro_usuario'), name='logout'), #especifica la pagina a la que redirige
     path('', listar_poleras, name='listar_poleras'),
     path('crear_polera/', crear_polera, name='crear_polera'),
     path('registro/',registro_usuario, name='registro_usuario'),

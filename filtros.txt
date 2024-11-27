@@ -1,0 +1,10 @@
+# Obtener poleras que tengan un precio mayor a 2000 y cargar su categoría select_related
+
+poleras = Polera.objects.select_related('categoria').filter(precio__gt=2000)
+prefetch_related con filtros:
+# Obtener libros y pre-cargar sus autores, solo aquellos cuyo título contenga "Django"
+libros = Libro.objects.prefetch_related('autores').filter(titulo__icontains='Django')
+
+select_related y prefetch_related en combinación: A veces, es posible que necesites usar ambos en una sola consulta para optimizar las relaciones complejas. Por ejemplo, puedes usar select_related para cargar relaciones ForeignKey y prefetch_related para relaciones ManyToMany en la misma consulta.
+# Obtener poleras con su categoría y autores, optimizando las relaciones
+poleras = Polera.objects.select_related('categoria').prefetch_related('autores').all()
